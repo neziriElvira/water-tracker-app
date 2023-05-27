@@ -1,0 +1,33 @@
+.new-drink__controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.new-drink__control {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    width: 30%;
+    display: inline-block;
+}
+
+.new-drink__control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-right: 1rem;
+    display: inline-block;
+}
+
+.new-drink__control input {
+    font: inherit;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    border-radius: 6px;
+    max-width: 100%;
+}
+
+.new-drink__actions {
+    text-align: right;
+}
