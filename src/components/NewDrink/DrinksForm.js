@@ -5,19 +5,29 @@ const DrinksForm = (props) => {
 
     const [item, setItems] = useState(props.items);
     const [drinkAmount, setDrinkAmount] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
 
     const clickHandler = (event) => {
         event.preventDefault();
         setDrinkAmount(parseFloat(event.target.value));
-        console.log(drinkAmount);
+        //   console.log(event.target);
+    }
+
+    const dateChangeHandler = (event) => {
+        setEnteredDate(event.target.value);
     }
 
     const submitHandler = (e) => {
         e.preventDefault();
+        const userInput = {
+            drink: drinkAmount,
+            date: new Date(enteredDate)
+        }
+        console.log(userInput);
     }
 
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="new-drink_controls">
                 <div className='new-drink__control'>
                     <button onClick={clickHandler} value={item[0].amount}>{item[0].text}</button>
@@ -30,11 +40,11 @@ const DrinksForm = (props) => {
                 </div>
                 <div className='new-drink__control'>
                     <label>Date</label>
-                    <input type='date' min='2019-01-01' max='2022-12-31' />
+                    <input type='date' value={enteredDate} min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler} />
                 </div>
                 <div className='new-drink__actions'>
                     <button type='button'>Cancel</button>
-                    <button type='submit' onSubmit={submitHandler}>Drink</button>
+                    <button type='submit' >Drink</button>
                 </div>
             </div>
         </form>
