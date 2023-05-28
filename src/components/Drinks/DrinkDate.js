@@ -1,11 +1,11 @@
 import React from "react";
 import './DrinkDate.css';
-const DrinkDate = () => {
+const DrinkDate = (props) => {
 
-    const drinkingDate = new Date(2021, 2, 28);
-    const month = drinkingDate.toLocaleString('en-US', { month: 'long' });
-    const day = drinkingDate.toLocaleString('en-US', { day: '2-digit' });
-    const year = drinkingDate.getFullYear();
+    //    const drinkingDate = new Date(2021, 2, 28);
+    const month = props.date.toLocaleString('en-US', { month: 'long' });
+    const day = props.date.toLocaleString('en-US', { day: '2-digit' });
+    const year = props.date.getFullYear();
 
     return (
         <div className="drink-date">

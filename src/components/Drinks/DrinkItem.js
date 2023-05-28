@@ -2,18 +2,14 @@ import React from "react";
 import './DrinkItem.css';
 import DrinkDate from "./DrinkDate";
 import Card from "../UI/Card";
-const DrinkItem = () => {
+const DrinkItem = (props) => {
 
-
-    const drinkTtitle = 'Glass';
-    const drinkAmount = 1;
 
     return (
         <Card className="drink-item">
-            <DrinkDate />
+            <DrinkDate date={props.date} />
             <div className="drink-item__description">
-                <h2>{drinkTtitle}</h2>
-                <div className="drink-item__number">{drinkAmount}</div>
+                <h2>{props.title}</h2>
             </div>
         </Card>
     );
