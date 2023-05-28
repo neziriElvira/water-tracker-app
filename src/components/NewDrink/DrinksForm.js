@@ -22,7 +22,8 @@ const DrinksForm = (props) => {
         const userInput = {
             drink: drinkAmount,
             date: new Date(enteredDate)
-        }
+        };
+        props.onAddDrink(userInput);
         console.log(userInput);
     }
 

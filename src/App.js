@@ -24,9 +24,13 @@ function App() {
 
   const [drinks, setDrinks] = useState(DAMB_DATA);
 
+  const addDrinkHandler = (drink) => {
+    console.log(drink);
+  }
+
   return (
     <div className="App">
-      <NewDrink items={drinks} />
+      <NewDrink items={drinks} onAddDrink={addDrinkHandler} />
       <Drinks />
     </div>
   );
