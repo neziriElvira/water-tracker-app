@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import DrinksForm from "./DrinksForm";
 import './NewDrink.css';
 
 const NewDrink = (props) => {
+
+    const [formDisplayed, setFormDisplayed] = useState(false);
 
     const addDrinkHandler = (enteredDrink) => {
         const drinkData = {
@@ -11,11 +13,23 @@ const NewDrink = (props) => {
         }
 
         props.onAddDrink(drinkData);
+        setFormDisplayed(false);
+    }
+
+    const clickHandler = (e) => {
+        setFormDisplayed(true);
+    }
+
+    const handleCancelClick = (e) => {
+        setFormDisplayed(false);
     }
 
     return (
         <div className="new-drink">
-            <DrinksForm items={props.items} onAddDrink={addDrinkHandler} />
+            {formDisplayed &&
+                <DrinksForm items={props.items} onAddDrink={addDrinkHandler} onCancelClick={handleCancelClick} />}
+            {!formDisplayed &&
+                <button onClick={clickHandler}>Add New Drink</button>}
         </div>
     )
 };

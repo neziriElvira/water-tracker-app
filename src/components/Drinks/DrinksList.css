@@ -1,0 +1,9 @@
+.drinks-list {
+    list-style: none;
+    padding: 0;
+}
+
+.drinks-list__fallback {
+    color: white;
+    text-align: center;
+}

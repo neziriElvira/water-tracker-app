@@ -3,13 +3,20 @@ import './DrinksForm.css';
 
 const DrinksForm = (props) => {
 
-    const [item, setItems] = useState(props.items);
+    const [enteredText, setEnteredText] = useState('');
     const [drinkAmount, setDrinkAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
 
     const clickHandler = (event) => {
         event.preventDefault();
         setDrinkAmount(parseFloat(event.target.value));
+        if (event.target.value === '250') {
+            setEnteredText('Glass of 250ml');
+        } else if (event.target.value === '500') {
+            setEnteredText('glass of 500ml');
+        } else if (event.target.value === '700') {
+            setEnteredText('glass of 700ml');
+        }
         //   console.log(event.target);
     }
 
@@ -20,31 +27,36 @@ const DrinksForm = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         const userInput = {
-            drink: drinkAmount,
+            text: enteredText,
+            amount: drinkAmount,
             date: new Date(enteredDate)
         };
         props.onAddDrink(userInput);
         console.log(userInput);
     }
 
+    const cancelClickHandler = () => {
+        props.onCancelClick();
+    }
+
     return (
         <form onSubmit={submitHandler}>
             <div className="new-drink_controls">
                 <div className='new-drink__control'>
-                    <button onClick={clickHandler} value={item[0].amount}>{item[0].text}</button>
+                    <button onClick={clickHandler} value='250'>glass of 250</button>
                 </div>
                 <div className='new-drink__control'>
-                    <button onClick={clickHandler} value={item[1].amount}>{item[1].text}</button>
+                    <button onClick={clickHandler} value='500'>glass of 500</button>
                 </div>
                 <div className='new-drink__control'>
-                    <button onClick={clickHandler} value={item[2].amount}>{item[2].text}</button>
+                    <button onClick={clickHandler} value='700'>glass of 700</button>
                 </div>
                 <div className='new-drink__control'>
                     <label>Date</label>
                     <input type='date' value={enteredDate} min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler} />
                 </div>
                 <div className='new-drink__actions'>
-                    <button type='button'>Cancel</button>
+                    <button type='button' onClick={cancelClickHandler}>Cancel</button>
                     <button type='submit' >Drink</button>
                 </div>
             </div>

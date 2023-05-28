@@ -10,13 +10,13 @@ const DAMB_DATA = [
     date: new Date(2020, 7, 14),
   },
   {
-    id: 'e1',
+    id: 'e2',
     text: 'Glass od 500ml',
     amount: 0.5,
     date: new Date(2020, 1, 16),
   },
   {
-    id: 'e1',
+    id: 'e3',
     text: 'Glass od 700ml',
     amount: 0.7,
     date: new Date(2020, 2, 20),
@@ -28,7 +28,11 @@ function App() {
   const [drinks, setDrinks] = useState(DAMB_DATA);
 
   const addDrinkHandler = (drink) => {
-    console.log(drink);
+    setDrinks((prevDrinks) => {
+      return [drink, ...prevDrinks];
+    });
+
+    console.log(drinks);
   }
 
   return (
