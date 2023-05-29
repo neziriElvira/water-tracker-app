@@ -3,9 +3,9 @@ import './ChartBar.css';
 
 const ChartBar = (props) => {
 
-    let heightFill = '100%';
+    let heightFill = '0%';
 
-    if (props.max > 0) {
+    if (props.maxValue > 0) {
         heightFill = Math.round((props.value / props.maxValue) * 100) + '%';
     }
 
@@ -17,7 +17,6 @@ const ChartBar = (props) => {
                 </div>
                 <div className="chart-bar__label">{props.label}</div>
             </div>
-
         </div>
     );
 }

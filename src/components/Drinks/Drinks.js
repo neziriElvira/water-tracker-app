@@ -3,6 +3,7 @@ import './Drinks.css';
 import Card from "../UI/Card";
 import DrinksFilter from "./DrinksFiler";
 import DrinksList from "./DrinksList";
+import DrinksChart from "./DrinksChart";
 
 const Drinks = (props) => {
 
@@ -20,6 +21,7 @@ const Drinks = (props) => {
     return (
         <Card className='drinks'>
             <DrinksFilter month={selectedMonth} onFilteredMonth={filteredMonthHendler} />
+            <DrinksChart drinks={filteredDrinks} />
             <DrinksList items={filteredDrinks} />
         </Card>
     )
